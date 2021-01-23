@@ -4,9 +4,7 @@ import { useDispatch } from 'react-redux'
 import { sortDesc } from './actions/productsActions'
 
 import ProductsList from './screens/ProductsList'
-import Filter from './components/Filter'
-import Currency from './components/Currency'
-import Sorter from './components/Sorter'
+import CockpitPanel from './screens/CockpitPanel'
 
 function App() {
   const dispatch = useDispatch()
@@ -16,13 +14,10 @@ function App() {
     <Container>
       <Row>
         <Col lg='3'>
-          <Filter />
-          <Currency />
-          <Sorter />
+          <CockpitPanel />
         </Col>
         <Col lg='9'>
           <Row>
-
             <ProductsList />
           </Row>
         </Col >
