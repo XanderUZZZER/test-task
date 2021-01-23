@@ -14,7 +14,6 @@ const Filter = () => {
   const maxInputRef = useRef()
 
   useEffect(() => {
-    console.log(currency);
     setMinPrice((Math.min(...products.map(product => product.price)) * currency).toFixed())
     setMaxPrice((Math.max(...products.map(product => product.price)) * currency).toFixed())
   }, [products, currency])

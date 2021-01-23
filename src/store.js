@@ -13,8 +13,13 @@ const reducer = combineReducers({
 
 const initialState = {
   products: {
-    products: [...JSON.parse(JSON.stringify(data))],
-    filteredProducts: [...JSON.parse(JSON.stringify(data))],
+    products: [
+      ...JSON.parse(JSON.stringify(data))
+    ],
+
+    filteredProducts: [
+      ...JSON.parse(JSON.stringify(data))
+    ],
     currency: UAH,
     sort: 'DESC'
   }

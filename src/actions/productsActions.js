@@ -5,9 +5,10 @@ import {
   PRODUCT_SORT_NAME,
   PRODUCT_FILTER_PRICE,
   PRODUCT_SET_CURRENCY,
+  PRODUCT_ADD,
   UAH
 } from '../constants/productConstants'
-import data from '../products.json'
+import { v4 as uuidv4 } from 'uuid';
 
 export const getProducts = () => {
   return {
@@ -48,5 +49,12 @@ export const setCurrency = (currency = UAH) => dispatch => {
     type: PRODUCT_SET_CURRENCY,
     payload: currency
   })
-  //dispatch(getProducts())
+}
+
+export const addProduct = (product) => dispatch => {
+  product.id = uuidv4()
+  dispatch({
+    type: PRODUCT_ADD,
+    payload: product
+  })
 }
