@@ -3,13 +3,14 @@ import {
   PRODUCT_SORT_DESC,
   PRODUCT_SORT_ASC,
   PRODUCT_SORT_NAME,
-  PRODUCT_FILTER_PRICE
+  PRODUCT_FILTER_PRICE,
+  PRODUCT_SET_CURRENCY
 } from '../constants/productConstants'
 
 export const productsReducer = (state = { products: [], filteredProducts: [] }, action) => {
   switch (action.type) {
     case PRODUCT_LIST:
-      return { ...state, products: action.payload }
+      return { ...state, filteredProducts: [...state.filteredProducts.map(product => { return { ...product, price: state.products.find(prod => prod.id === product.id).price * state.currency } })] }
     case PRODUCT_SORT_DESC:
       return { ...state, filteredProducts: [...state.filteredProducts.sort((a, b) => parseFloat(b.price) - parseFloat(a.price))] }
     case PRODUCT_SORT_ASC:
@@ -24,6 +25,8 @@ export const productsReducer = (state = { products: [], filteredProducts: [] }, 
       }
     case PRODUCT_FILTER_PRICE:
       return { ...state, filteredProducts: state.products.filter(product => product.price >= action.payload.min && product.price <= action.payload.max) }
+    case PRODUCT_SET_CURRENCY:
+      return { ...state, currency: action.payload }
     default:
       return state
   }

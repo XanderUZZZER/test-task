@@ -3,15 +3,15 @@ import {
   PRODUCT_SORT_DESC,
   PRODUCT_SORT_ASC,
   PRODUCT_SORT_NAME,
-  PRODUCT_FILTER_PRICE
+  PRODUCT_FILTER_PRICE,
+  PRODUCT_SET_CURRENCY,
+  UAH
 } from '../constants/productConstants'
 import data from '../products.json'
 
 export const getProducts = () => {
-  const products = JSON.parse(JSON.stringify(data))
   return {
-    type: PRODUCT_LIST,
-    payload: products
+    type: PRODUCT_LIST
   }
 }
 
@@ -41,5 +41,12 @@ export const filterPrice = (min, max) => dispatch => {
       max
     }
   })
-  dispatch(sortDesc())
+}
+
+export const setCurrency = (currency = UAH) => dispatch => {
+  dispatch({
+    type: PRODUCT_SET_CURRENCY,
+    payload: currency
+  })
+  //dispatch(getProducts())
 }
