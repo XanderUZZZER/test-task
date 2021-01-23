@@ -1,4 +1,5 @@
 import { createStore, combineReducers } from 'redux'
+import { composeWithDevTools } from 'redux-devtools-extension'
 import { productsReducer } from './reducers/productsReducer';
 
 const reducer = combineReducers({
@@ -82,7 +83,8 @@ const initialState = {
 
 const store = createStore(
   reducer,
-  initialState
+  initialState,
+  composeWithDevTools()
 )
 
 export default store;
