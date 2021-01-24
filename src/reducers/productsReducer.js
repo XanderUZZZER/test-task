@@ -17,13 +17,7 @@ export const productsReducer = (state = { products: [], filteredProducts: [] }, 
     case PRODUCT_SORT_ASC:
       return { ...state, filteredProducts: [...state.filteredProducts.sort((a, b) => parseFloat(a.price) - parseFloat(b.price))] }
     case PRODUCT_SORT_NAME:
-      return {
-        ...state, filteredProducts: [...state.filteredProducts.sort((a, b) => {
-          if (a.name < b.name) { return -1; }
-          if (a.name > b.name) { return 1; }
-          return 0
-        })]
-      }
+      return { ...state, filteredProducts: [...state.filteredProducts.sort((a, b) => a.name.localeCompare(b.name))] }
     case PRODUCT_FILTER_PRICE:
       return { ...state, filteredProducts: state.products.filter(product => product.price >= action.payload.min && product.price <= action.payload.max) }
     case PRODUCT_SET_CURRENCY:
