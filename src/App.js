@@ -1,7 +1,7 @@
 import { Container, Row, Col } from 'react-bootstrap'
 
 import { useDispatch } from 'react-redux'
-import { sortDesc } from './actions/productsActions'
+import { sort } from './actions/productsActions'
 
 import ProductsList from './screens/ProductsList'
 import CockpitPanel from './screens/CockpitPanel'
@@ -9,7 +9,7 @@ import AddProduct from './screens/AddProduct'
 
 function App() {
   const dispatch = useDispatch()
-  dispatch(sortDesc())
+  dispatch(sort())
 
   return (
     <Container>

@@ -27,7 +27,7 @@ const initialState = {
       ...savedProducts
     ],
     currency: UAH,
-    sort: 'DESC'
+    sortCriteria: 'DESC'
   }
 }
 

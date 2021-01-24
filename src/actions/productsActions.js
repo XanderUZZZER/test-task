@@ -1,8 +1,5 @@
 import {
   PRODUCT_LIST,
-  PRODUCT_SORT_DESC,
-  PRODUCT_SORT_ASC,
-  PRODUCT_SORT_NAME,
   PRODUCT_FILTER_PRICE,
   PRODUCT_SET_CURRENCY,
   PRODUCT_ADD,
@@ -16,22 +13,10 @@ export const getProducts = () => {
   }
 }
 
-export const sortDesc = () => {
-  return {
-    type: PRODUCT_SORT_DESC,
-  }
-}
-
-export const sortAsc = () => {
-  return {
-    type: PRODUCT_SORT_ASC,
-  }
-}
-
-export const sortName = () => {
-  return {
-    type: PRODUCT_SORT_NAME,
-  }
+export const sort = (sortCriteria) => (dispatch, getState) => {
+  dispatch({
+    type: `PRODUCT_SORT_${sortCriteria?.toString().toUpperCase() || getState().products.sortCriteria}`,
+  })
 }
 
 export const filterPrice = (min, max) => dispatch => {
@@ -42,6 +27,7 @@ export const filterPrice = (min, max) => dispatch => {
       max
     }
   })
+  dispatch(sort())
 }
 
 export const setCurrency = (currency = UAH) => dispatch => {

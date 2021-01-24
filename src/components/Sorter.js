@@ -1,25 +1,13 @@
 import React from 'react'
 import { useDispatch } from 'react-redux'
 import { Form } from 'react-bootstrap'
-import { sortAsc, sortDesc, sortName } from '../actions/productsActions'
+import { sort } from '../actions/productsActions'
 
 const Sorter = () => {
   const dispatch = useDispatch()
 
   return (
     <div className='my-3'>
-      {/* <div>
-        <input type="radio" id="sortDesc" name="sort" value="desc" defaultChecked onChange={() => dispatch(sortDesc())} />
-        <label htmlFor="sortDesc">Sort descending</label>
-      </div>
-      <div>
-        <input type="radio" id="sortAsc" name="sort" value="asc" onChange={() => dispatch(sortAsc())} />
-        <label htmlFor="sortAsc">Sort ascending</label>
-      </div>
-      <div>
-        <input type="radio" id="sortName" name="sort" value="name" onChange={() => dispatch(sortName())} />
-        <label htmlFor="sortName">Sort by name</label>
-      </div> */}
       <h3>Sort</h3>
       <Form.Check
         type="radio"
@@ -28,7 +16,7 @@ const Sorter = () => {
         name="sort"
         value="desc"
         defaultChecked
-        onChange={() => dispatch(sortDesc())}
+        onChange={(e) => dispatch(sort(e.target.value))}
       />
       <Form.Check
         type="radio"
@@ -36,7 +24,7 @@ const Sorter = () => {
         label="ascending price"
         name="sort"
         value="asc"
-        onChange={() => dispatch(sortAsc())}
+        onChange={(e) => dispatch(sort(e.target.value))}
       />
       <Form.Check
         type="radio"
@@ -44,7 +32,7 @@ const Sorter = () => {
         label="name"
         name="sort"
         value="name"
-        onChange={() => dispatch(sortName())}
+        onChange={(e) => dispatch(sort(e.target.value))}
       />
     </div >
   )

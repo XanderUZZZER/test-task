@@ -31,9 +31,8 @@ const Filter = () => {
           min={minPrice || 0}
           max={maxPrice || 100}
           ref={maxInputRef}
-          value={maxPrice}
+          defaultValue={maxPrice}
           onChange={e => {
-            setMaxPrice(e.target.value)
             dispatch(filterPrice(minInputRef.current.value / currency, maxInputRef.current.value / currency))
           }}
         />
@@ -47,9 +46,8 @@ const Filter = () => {
           min={minPrice || 0}
           max={maxPrice || 100}
           ref={minInputRef}
-          value={minPrice}
+          defaultValue={minPrice}
           onChange={e => {
-            setMinPrice(e.target.value)
             dispatch(filterPrice(minInputRef.current.value / currency, maxInputRef.current.value / currency))
           }}
         />
