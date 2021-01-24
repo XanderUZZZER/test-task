@@ -1,5 +1,6 @@
 import React, { useRef, useState, useEffect } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
+import { Form, InputGroup } from 'react-bootstrap'
 import { filterPrice } from '../actions/productsActions'
 
 const Filter = () => {
@@ -19,24 +20,30 @@ const Filter = () => {
   }, [products, currency])
 
   return (
-    <div className='my-3'>
-      <div>
-        <label htmlFor="maxPrice">Max price</label>
-        <input type="number" id="maxPrice" name="price"
+    <div className='my-4'>
+      <h3>Price Filter</h3>
+      <InputGroup className='my-2'>
+        <InputGroup.Prepend>
+          <InputGroup.Text>Max</InputGroup.Text>
+        </InputGroup.Prepend>
+        <Form.Control
+          type="number" id="maxPrice" name="price"
           min={minPrice || 0}
           max={maxPrice || 100}
           ref={maxInputRef}
           value={maxPrice}
-
           onChange={e => {
             setMaxPrice(e.target.value)
             dispatch(filterPrice(minInputRef.current.value / currency, maxInputRef.current.value / currency))
           }}
         />
-      </div>
-      <div>
-        <label htmlFor="minPrice">Min price</label>
-        <input type="number" id="minPrice" name="price"
+      </InputGroup>
+      <InputGroup className='my-3'>
+        <InputGroup.Prepend>
+          <InputGroup.Text>Min</InputGroup.Text>
+        </InputGroup.Prepend>
+        <Form.Control
+          type="number" id="minPrice" name="price"
           min={minPrice || 0}
           max={maxPrice || 100}
           ref={minInputRef}
@@ -46,7 +53,7 @@ const Filter = () => {
             dispatch(filterPrice(minInputRef.current.value / currency, maxInputRef.current.value / currency))
           }}
         />
-      </div>
+      </InputGroup>
     </div>
   )
 }
