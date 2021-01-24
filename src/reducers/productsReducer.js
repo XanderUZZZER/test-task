@@ -29,7 +29,6 @@ export const productsReducer = (state = { products: [], filteredProducts: [] }, 
     case PRODUCT_SET_CURRENCY:
       return { ...state, currency: action.payload }
     case PRODUCT_ADD:
-      console.log(state.products);
       return { ...state, products: [...state.products, action.payload], filteredProducts: [...state.filteredProducts, action.payload] }
     default:
       return state

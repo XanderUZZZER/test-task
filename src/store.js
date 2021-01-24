@@ -11,14 +11,20 @@ const reducer = combineReducers({
   products: productsReducer
 })
 
+const savedProducts = localStorage.getItem('products')
+  ? JSON.parse(localStorage.getItem('products'))
+  : []
+
 const initialState = {
   products: {
     products: [
-      ...JSON.parse(JSON.stringify(data))
+      ...JSON.parse(JSON.stringify(data)),
+      ...savedProducts
     ],
 
     filteredProducts: [
-      ...JSON.parse(JSON.stringify(data))
+      ...JSON.parse(JSON.stringify(data)),
+      ...savedProducts
     ],
     currency: UAH,
     sort: 'DESC'

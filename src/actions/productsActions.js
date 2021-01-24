@@ -51,8 +51,13 @@ export const setCurrency = (currency = UAH) => dispatch => {
   })
 }
 
-export const addProduct = (product) => dispatch => {
+export const addProduct = (product) => (dispatch, getState) => {
   product.id = uuidv4()
+  const savedProducts = localStorage.getItem('products')
+    ? JSON.parse(localStorage.getItem('products'))
+    : []
+  savedProducts.push(product)
+  localStorage['products'] = JSON.stringify(savedProducts)
   dispatch({
     type: PRODUCT_ADD,
     payload: product
